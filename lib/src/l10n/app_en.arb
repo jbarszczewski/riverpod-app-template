@@ -1,0 +1,20 @@
+{
+	"language": "English",
+	"@language": {
+		"description": "The language name"
+	},
+	"goToHomePage": "Go Home",
+	"@goToHomePage": {
+		"description": "Navigate to home."
+	},
+	"goTo": "Go to {targetName}",
+	"@goTo": {
+		"description": "'Navigate to' with a single parameter",
+		"placeholders": {
+			"targetName": {
+				"type": "String",
+				"example": "Details"
+			}
+		}
+	}
+}
