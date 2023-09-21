@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_app_template/src/l10n/string_hardcoded.dart';
 
 import '../../routing/app_router.dart';
 
@@ -17,7 +18,7 @@ class HomeScreen extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
             onPressed: () => context.pushNamed(AppRoute.details.name),
-            child: Text(l10n.goTo("Details")),
+            child: Text(l10n.goTo("Details".hardcoded)),
           ),
         ));
   }
