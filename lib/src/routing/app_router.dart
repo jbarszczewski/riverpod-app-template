@@ -1,12 +1,16 @@
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../features/details/details_screen.dart';
-import '../features/home/home_screen.dart';
+import '../features/todos/presentation/todos_screen.dart';
+import '../features/home/presentation/home_screen.dart';
 
-enum AppRoute { home, details }
+part 'app_router.g.dart';
 
-// GoRouter configuration
-final router = GoRouter(
+enum AppRoute { home, todos }
+
+@riverpod
+GoRouter goRouter(GoRouterRef ref) {
+  return GoRouter(
   routes: [
     GoRoute(
       path: '/',
@@ -14,9 +18,10 @@ final router = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
-      path: '/details',
-      name: AppRoute.details.name,
-      builder: (context, state) => const DetailsScreen(),
+      path: '/todos',
+      name: AppRoute.todos.name,
+      builder: (context, state) => const TodosScreen(),
     ),
   ],
 );
+}

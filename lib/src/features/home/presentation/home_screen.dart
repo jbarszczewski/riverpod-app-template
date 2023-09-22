@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_app_template/src/l10n/string_hardcoded.dart';
 
-import '../../routing/app_router.dart';
+import '../../../routing/app_router.dart';
 
 /// The home screen
 class HomeScreen extends StatelessWidget {
@@ -17,8 +17,8 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(title: const Text('Home Screen')),
         body: Center(
           child: ElevatedButton(
-            onPressed: () => context.pushNamed(AppRoute.details.name),
-            child: Text(l10n.goTo("Details".hardcoded)),
+            onPressed: () => context.pushNamed(AppRoute.todos.name),
+            child: Text(l10n.goTo("Todos".hardcoded)),
           ),
         ));
   }
