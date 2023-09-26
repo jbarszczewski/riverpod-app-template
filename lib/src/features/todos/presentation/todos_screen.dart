@@ -1,30 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../routing/app_router.dart';
-import 'todo_list_tile.dart';
+import 'todos_list.dart';
 
-class TodosScreen extends StatelessWidget {
+class TodosScreen extends ConsumerWidget {
   /// Constructs a [TodosScreen]
   const TodosScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Todos Screen')),
-      body: Center(
-        child: ListView(
-          children: [
-            for (var i = 0; i < 10; i++)
-              TodoListTile(
-                title: 'Todo $i',
-                onTap: () => context.pushNamed(
-                  AppRoute.todos.name
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
+        appBar: AppBar(title: const Text('Todos Screen')),
+        body: const TodosList());
   }
 }
