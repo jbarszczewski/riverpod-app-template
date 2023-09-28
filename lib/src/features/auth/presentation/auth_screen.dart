@@ -12,7 +12,7 @@ class AuthScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(fakeAuthStateChangesProvider);
+    final authState = ref.watch(fakeAuthRepositoryProvider);
     return Scaffold(
       appBar: AppBar(title: Text('Auth Screen'.hardcoded)),
       body: authState.when(

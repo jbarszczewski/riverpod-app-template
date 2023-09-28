@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_repository.dart';
+part of 'fake_auth_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authRepositoryHash() => r'b3ad9a68d73a513c5c38ea59778e7c54fab90cb2';
+String _$fakeAuthRepositoryHash() =>
+    r'ba770c7cdb0b9273267d2e36a35ad826767c405f';
 
-/// See also [AuthRepository].
-@ProviderFor(AuthRepository)
-final authRepositoryProvider =
-    StreamNotifierProvider<AuthRepository, User?>.internal(
-  AuthRepository.new,
-  name: r'authRepositoryProvider',
+/// See also [FakeAuthRepository].
+@ProviderFor(FakeAuthRepository)
+final fakeAuthRepositoryProvider =
+    AutoDisposeStreamNotifierProvider<FakeAuthRepository, User?>.internal(
+  FakeAuthRepository.new,
+  name: r'fakeAuthRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$authRepositoryHash,
+      : _$fakeAuthRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AuthRepository = StreamNotifier<User?>;
+typedef _$FakeAuthRepository = AutoDisposeStreamNotifier<User?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -12,18 +12,14 @@ class AuthController extends _$AuthController {
   }
 
   Future<void> signInAnonymously() async {
-    print('signInAnonymously');
-    final authRepository = ref.read(fakeAuthRepositoryProvider);
     state = const AsyncLoading();
-    state = await AsyncValue.guard(authRepository.signInAnonymously);
-    print('signInAnonymously done');
+    state = await AsyncValue.guard(
+        ref.read(fakeAuthRepositoryProvider.notifier).signInAnonymously);
   }
 
   Future<void> signOut() async {
-    print('signOut');
-    final authRepository = ref.read(fakeAuthRepositoryProvider);
     state = const AsyncValue.loading();
-    state = await AsyncValue.guard(authRepository.signOut);
-    print('signOut done');
+    state = await AsyncValue.guard(
+        ref.read(fakeAuthRepositoryProvider.notifier).signOut);
   }
 }

@@ -1,30 +1,24 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_app_template/src/utils/in_memory_store.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../utils/in_memory_store.dart';
 import '../domain/user.dart';
 
-final fakeAuthRepositoryProvider = Provider<FakeAuthRepository>((ref) {
-  final auth = FakeAuthRepository();
-  ref.onDispose(() => auth.dispose());
-  return auth;
-});
+part 'fake_auth_repository.g.dart';
 
-final fakeAuthStateChangesProvider = StreamProvider.autoDispose<User?>((ref) {
-  final authRepository = ref.watch(fakeAuthRepositoryProvider);
-  return authRepository.authStateChanges();
-});
-
-class FakeAuthRepository {
+@riverpod
+class FakeAuthRepository extends _$FakeAuthRepository {
   final _authState = InMemoryStore<User?>(null);
 
-  User? get currentUser => _authState.value;
-  Stream<User?> authStateChanges() => _authState.stream;
+  @override
+  Stream<User?> build() {
+    return _authState.stream;
+  }
 
   void dispose() => _authState.close();
 
   Future<void> signInAnonymously() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     _authState.value = User(id: const Uuid().v4(), email: 'no@email.com');
   }
 

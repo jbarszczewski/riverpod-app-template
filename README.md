@@ -4,7 +4,6 @@
 A template to kickstart app development.
 It comes with:
 
--	AWS Amplify services
--   riverpod
+-   riverpod + riverpod generator
 -   localization (l10n)
 -   routing (go_router)
