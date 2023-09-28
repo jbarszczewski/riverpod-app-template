@@ -4,26 +4,25 @@ import '../domain/todo.dart';
 
 part 'todos_repository.g.dart';
 
-@riverpod
-Future<List<Todo>> getTodos(GetTodosRef ref) {
-  return ref.watch(todosRepositoryProvider).getTodos();
-}
+@Riverpod(keepAlive: true)
+class TodosRepository extends _$TodosRepository {
+  @override
+  List<Todo> build() => List<Todo>.generate(
+      12,
+      (int index) => Todo(
+            id: index,
+            title: 'Todo $index',
+            isDone: index % 3 == 0,
+          ));
 
-@riverpod
-TodosRepository todosRepository(TodosRepositoryRef ref) => TodosRepository();
+  void deleteTodo({required int id}) {
+    state.removeWhere((todo) => todo.id == id);
+    state = [...state];
+  }
 
-class TodosRepository {
-  deleteTodo({required int id}) {}
-
-  Future<List<Todo>> getTodos() async {
-    final List<Todo> todos = List<Todo>.generate(
-        10,
-        (int index) => Todo(
-              id: index,
-              title: 'Todo $index',
-              isDone: index % 3 == 0,
-            ));
-
-    return todos;
+  void setTodoState({required int id, required bool isDone}) {
+    final index = state.indexWhere((todo) => todo.id == id);
+    state[index] = state[index].copyWith(isDone: isDone);
+    state = [...state];
   }
 }

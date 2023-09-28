@@ -6,7 +6,12 @@ class TodoListTile extends StatelessWidget {
   final Todo todo;
 
   final Function(int) onDelete;
-  const TodoListTile({Key? key, required this.todo, required this.onDelete})
+  final Function(int, bool) onToggle;
+  const TodoListTile(
+      {Key? key,
+      required this.todo,
+      required this.onToggle,
+      required this.onDelete})
       : super(key: key);
 
   @override
@@ -14,7 +19,9 @@ class TodoListTile extends StatelessWidget {
     return ListTile(
       title: Row(
         children: [
-          Checkbox(value: todo.isDone, onChanged: (_) {}),
+          Checkbox(
+              value: todo.isDone,
+              onChanged: (value) => onToggle(todo.id, value ?? false)),
           Text(todo.title),
           Text(' {${todo.id}}'),
           const Spacer(),

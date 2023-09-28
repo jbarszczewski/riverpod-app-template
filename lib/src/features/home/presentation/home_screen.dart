@@ -14,7 +14,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-        appBar: AppBar(title: const Text('Home Screen')),
+        appBar: AppBar(title: Text('Home Screen'.hardcoded), actions: [
+          IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () => context.pushNamed(AppRoute.auth.name),
+          ),
+        ]),
         body: Center(
           child: ElevatedButton(
             onPressed: () => context.pushNamed(AppRoute.todos.name),
